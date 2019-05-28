@@ -2,4 +2,4 @@
 
 ## Install Antigen
 
-  $ curl -L git.io/antigen > ~/bin/antigen.zsh
+    $ curl -L git.io/antigen > ~/bin/antigen.zsh
