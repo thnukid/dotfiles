@@ -1,0 +1,91 @@
+#
+# Original script by Tijn Schuurmans - https://github.com/tijn
+#
+config defaultToCurrentScreen true
+# The base value for nudge percent calculation
+config nudgePercentOf screenSize
+# The base value for resize percent calculation
+config resizePercentOf screenSize
+
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
+
+# - See more at: http://mauriciogardini.com/post/43348489262/slate-a-mac-os-x-window-manager-for-power-users#sthash.QFBeG9v4.dpuf
+
+
+# config modalEscapeKey esc
+
+bind g:ctrl;cmd grid padding:5 0:6,6 1:6,6
+
+
+# Move Windows
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias centered move screenOriginX+screenSizeX/16;screenOriginY+screenSizeY/16 screenSizeX-screenSizeX/16*2;screenSizeY-screenSizeY/16*2
+
+alias left-half      move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias left-third     move screenOriginX;screenOriginY screenSizeX/3;screenSizeY
+alias left-twothirds move screenOriginX;screenOriginY 2*screenSizeX/3;screenSizeY
+
+alias right-half      move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias right-third     move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+alias right-twothirds move screenOriginX+screenSizeX/3;screenOriginY 2*screenSizeX/3;screenSizeY
+
+alias middle-third move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+
+alias top-half    move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
+alias bottom-half move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
+
+alias topleft           corner top-left     resize:screenSizeX/2;screenSizeY/2
+alias topleft-third     corner top-left     resize:screenSizeX/3;screenSizeY/2
+alias topright          corner top-right    resize:screenSizeX/2;screenSizeY/2
+alias topright-third    corner top-right    resize:screenSizeX/3;screenSizeY/2
+alias bottomleft        corner bottom-left  resize:screenSizeX/2;screenSizeY/2
+alias bottomleft-third  corner bottom-left  resize:screenSizeX/3;screenSizeY/2
+alias bottomright       corner bottom-right resize:screenSizeX/2;screenSizeY/2
+alias bottomright-third corner bottom-right resize:screenSizeX/3;screenSizeY/2
+
+
+# The following 'bind' lines allow you to hold "CTRL" and "COMMAND"
+# and then press a third key that corresponds to 9 sections of a
+# square:
+#
+#     u  i  o
+#  h  j  k  l  ;
+#     m  ,  .
+
+bind u:ctrl;cmd  chain ${topleft} | ${topleft-third}
+bind j:ctrl;cmd  chain ${left-half} | ${left-third}
+bind m:ctrl;cmd  chain ${bottomleft} | ${bottomleft-third}
+
+bind i:ctrl;cmd  ${top-half}
+bind k:ctrl;cmd  chain ${full} | ${centered} | ${middle-third}
+bind ,:ctrl;cmd  ${bottom-half}
+
+bind o:ctrl;cmd  chain ${topright} | ${topright-third}
+bind l:ctrl;cmd  chain ${right-half} | ${right-third}
+bind .:ctrl;cmd  chain ${bottomright} | ${bottomright-third}
+
+bind h:ctrl;cmd  ${left-twothirds}
+bind ;:ctrl;cmd  ${right-twothirds}
+
+
+# undo
+
+bind z:ctrl;cmd  undo
+
+# You can normally switch between windows on MacOS by pressing
+# COMMAND-TAB. The following Slate configuration provides an
+# alternative:
+#
+# COMMAND + CONTROL + tab will cause Slate to display the letters on the
+# home row above window. Logos will appear on these letters, and you
+# can press the letter to switch to that window.
+
+bind tab:cmd;ctrl hint ASDFGHJKL
+
+bind right:ctrl;cmd throw right resize
+bind left:ctrl;cmd  throw left  resize
+bind up:ctrl;cmd    throw up    resize
+bind down:ctrl;cmd  throw down  resize
+
