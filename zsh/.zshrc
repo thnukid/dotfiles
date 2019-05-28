@@ -83,5 +83,8 @@ alias bu="bundle update"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
+# Hide hostname when logged in as ericclaus
+DEFAULT_USER="ericclaus"
+
 # Load keys into ssh-agent
 ssh-add &>/dev/null
