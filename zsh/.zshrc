@@ -1,6 +1,9 @@
 # Antigen
 source $HOME/bin/antigen.zsh
 
+# asdf programming version manager
+source $HOME/.asdf/asdf.sh
+
 ### Prepend ~/bin to $PATH
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
