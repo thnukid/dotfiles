@@ -47,8 +47,8 @@ bindkey '^Z' fancy-ctrl-z
 alias vim="nvim"
 
 # Update neovim bundles
-alias nvbi="nvim +BundleInstall +qa"
-alias nvbu="nvim +BundleUpdate +qa"
+alias nvbi="nvim +PlugInstall +qa"
+alias nvbu="nvim +PlugUpdate +qa"
 
 # Git aliases
 alias g="git"
