@@ -1,6 +1,8 @@
 [user]
   name = Eric Bartholemy
   email = eric@kabisa.nl
+[includeIf "gitdir:~/personal/"]
+  path = ~/personal/.gitconfig
 [core]
   quotepath = false
   excludesfile = ~/.gitignore_global
