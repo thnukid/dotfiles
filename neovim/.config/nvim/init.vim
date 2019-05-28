@@ -141,6 +141,7 @@ let g:airline#extensions#tabline#enabled = 1
 " NERDtree
 nmap <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
+let g:NERDTreeShowHidden=1
 
 " CtrlP
 let g:ctrlp_custom_ignore = {
