@@ -162,7 +162,7 @@ nmap <leader>p :CtrlP<cr>
 set colorcolumn=80
 highlight ColorColumn ctermbg=0
 
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 10
+set guifont=Hack\ Regular\ Nerd\ Font\ Complete
 set encoding=utf-8
 set nowrap " no wrapping of lines
 set mouse=a " enable mouse scrolling
