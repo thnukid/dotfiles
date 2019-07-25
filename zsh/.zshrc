@@ -4,6 +4,9 @@ source $HOME/bin/antigen.zsh
 # asdf programming version manager
 source $HOME/.asdf/asdf.sh
 
+# scmpuff
+eval "$(scmpuff init -s)"
+
 ### Prepend ~/bin to $PATH
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -79,6 +82,9 @@ alias grhh="git reset HEAD --hard"
 alias bi="bundle install"
 alias be="bundle exec"
 alias bu="bundle update"
+
+# Overwrites
+alias ll='ls -ahl'
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
