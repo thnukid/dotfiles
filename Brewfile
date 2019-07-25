@@ -1,39 +1,42 @@
-# Essential terminal utilities
-tap "homebrew/services"
-
-brew "openssl"
-brew "readline", link: true
-brew "git"
-brew "postgresql"
-brew "redis"
-brew "imagemagick"
-brew "tmux"
-brew "neovim"
-brew "curl", args: ["with-openssl"]
-brew "zsh"
-brew "stow"
-brew "gpg"
-brew "pyenv"
-brew "python"
-brew "scmpuff"
-brew "the_silver_searcher"
-brew "universal-ctags"
-brew "docker"
-brew "wget"
-brew "freetype"
-
-# Essential Mac apps
+# brew bundle dump
 tap "caskroom/cask"
-tap "caskroom/versions"
-tap "caskroom/fonts"
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "thoughtbot/formulae"
+tap "universal-ctags/universal-ctags"
 
+brew "coreutils"
+brew "docker"
+brew "git"
+brew "openssl"
+brew "imagemagick"
+brew "libyaml"
+brew "neovim"
+brew "postgresql", restart_service: true
+brew "pyenv"
+brew "reattach-to-user-namespace"
+brew "redis", restart_service: true
+brew "scmpuff"
+brew "stow"
+brew "the_silver_searcher"
+brew "tmux"
+brew "tree"
+brew "watchman"
+brew "wget"
+brew "yarn"
+brew "zsh"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+
+# Casks
 cask "docker"
-cask "skype"
-cask "iterm2"
 cask "firefox"
 cask "flux"
 cask "google-chrome"
 cask "gpg-suite"
+cask "iterm2"
 cask "java"
 cask "karabiner-elements"
 cask "keybase"
@@ -41,12 +44,3 @@ cask "slack"
 cask "slate"
 cask "tor-browser"
 cask "vlc"
-
-# Ruby development
-brew "rbenv"
-brew "ruby-build"
-brew "rbenv-default-gems"
-
-# Node development
-brew "yarn"
-brew "node"
