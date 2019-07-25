@@ -29,9 +29,15 @@ Plug 'mxw/vim-jsx'
 Plug 'leshill/vim-json'
 " typescript
 Plug 'leafgarland/typescript-vim'
+" Ctags
+Plug 'ludovicchabant/vim-gutentags'
+" import statements for javascript with universal ctags
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 " Emmet Zen coding
 Plug 'mattn/emmet-vim'
+" closetag.vim
+Plug 'alvan/vim-closetag'
 
 " Ruby/Rails
 Plug 'tpope/vim-rails'
@@ -46,6 +52,8 @@ Plug 'scrooloose/syntastic'
 
 " prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" prettier
+nmap <Leader>mp <Plug>(Prettier)
 
 " modern javascript https://javascriptplayground.com/blog/2017/01/vim-for-javascript/
 Plug 'pangloss/vim-javascript'
@@ -276,9 +284,50 @@ fun! <SID>StripTrailingWhitespaces()
   %s/\t/  /ge
   call cursor(l, c)
 endfun
-
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+" closetag.vim
 " set filetype for hamlc and es6
 au! BufRead,BufNewFile *.hamlc setfiletype haml
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+let g:closetag_shortcut = '>'
+" Add > at current position without closing the current tag, default is ''
+let g:closetag_close_shortcut = '<leader>>'
+
+" vim-js-file-import
+nnoremap <Leader>mf <Plug>(JsFileImport)
+nnoremap <Leader>mF <Plug>(JsFileImportList)
+nnoremap <Leader>mg <Plug>(JsGotoDefinition)
+nnoremap <Leader>mG <Plug>(JsGotoDefinition)
+nnoremap <Leader>mp <Plug>(PromptJsFileImport)
+nnoremap <Leader>ms <Plug>(SortJsFileImport)
+nnoremap <Leader>mc <Plug>(JsFixImport)
